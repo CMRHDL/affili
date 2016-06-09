@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+  <!-- build:css vendor.min.css.gz -->
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" rel="stylesheet">
+  <!-- /build -->
+  <!-- build:css style.min.css.gz -->
+  <link rel="stylesheet" href="style/style.css" />
+  <!-- /build -->
+  <title>Rate</title>
+</head>
+<body>
+  <my-nav></my-nav>
+
+  <div style="margin: 75px" ng-view></div>
+
+  <div class="footer">
+    <p><span class="glyphicon glyphicon-heart"></span>Angular :: Icons von <a href="http://glyphicons.com/">GLYPHICONS</a></p>
+  </div>
+
+  <!-- build:js vendor.min.js.gz -->
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
+  <script src="../node_modules/angular/angular.js"></script>
+  <script src="../node_modules/angular-route/angular-route.js"></script>
+  <script src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="../node_modules/lodash/lodash.js"></script>
+  <!-- /build -->
+  <script src="vendor/soapclient.js"></script>
+  <script src="vendor/angular.soap.js"></script>
+  <!-- build:js app.min.js.gz -->
+  <script src="app.js"></script>
+  <script src="navbar/navbar.directive.js"></script>
+  <script src="navbar/navbar.controller.js"></script>
+	<script src="home/home.controller.js"></script>
+	<script src="search/search.controller.js"></script>
+	<script src="faq/faq.controller.js"></script>
+	<script src="some/some.controller.js"></script>
+	<script src="more/more.controller.js"></script>
+  <script src="tabs/tabs.controller.js"></script>
+	<script src="provider/rest.service.js"></script>
+  <!-- /build -->
+
+</body>
+</html>
