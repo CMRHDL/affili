@@ -8,8 +8,8 @@ exports.get = function(req, res) {
     url: 'https://product-api.affili.net/V3/WSDLFactory/Product_ProductData.wsdl',
     method: 'GET',
     qs: {
-      username: '759303',
-      password: '3U733z2enxJxlGkm6sn9',
+      username: '',
+      password: '',
       ShopIds: 'GetShopList',
     },
     headers: {
@@ -22,8 +22,8 @@ exports.get = function(req, res) {
     url: 'https://product-api.affili.net/V3/productservice.svc/JSON/SearchProducts',
     method: 'GET',
     qs: {
-      PublisherId: '759303',
-      password: '3U733z2enxJxlGkm6sn9',
+      PublisherId: '',
+      password: '',
       Query: 'ipod',
     },
   headers: {
