@@ -54,7 +54,7 @@ gulp.task('style', function() {
     .pipe(jscs({fix: true}))
     .pipe(jscs.reporter())
     .pipe(jscs.reporter('fail'))
-    .pipe(gulp.dest('app'));
+    .pipe(gulp.dest('client'));
 });
 
 gulp.task('jsSrc', function() {

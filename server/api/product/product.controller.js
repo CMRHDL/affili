@@ -3,14 +3,13 @@
 var _ = require('lodash'),
   request = require('request');
 
-exports.get = function(req, res) {
-  var logon = {
+exports.search = function(req, res) {
+  var logonReq = {
     url: 'https://product-api.affili.net/V3/WSDLFactory/Product_ProductData.wsdl',
     method: 'GET',
     qs: {
-      username: '',
-      password: '',
-      ShopIds: 'GetShopList',
+      username: req.body.username,
+      password: req.body.password,
     },
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -18,13 +17,16 @@ exports.get = function(req, res) {
     }
   }
 
-  var search = {
+  var searchReq = {
     url: 'https://product-api.affili.net/V3/productservice.svc/JSON/SearchProducts',
     method: 'GET',
     qs: {
-      PublisherId: '',
-      password: '',
-      Query: 'ipod',
+      PublisherId: req.body.username,
+      password: req.body.password,
+      Query: req.body.search,
+      PageSize: req.body.PageSize,
+      SortBy: 'Score',
+      SortOrder: req.body.SortOrder,
     },
   headers: {
       'Access-Control-Allow-Origin': '*',
@@ -32,7 +34,10 @@ exports.get = function(req, res) {
     }
   }
 
-  request(logon, function(logonErr, logonResponse, logonBody) {
+  startSearch(logonReq, searchReq);
+
+  function startSearch(logon, search) {
+    request(logon, function(logonErr, logonResponse, logonBody) {
       if (!logonErr) {
         request(search, function(searchErr, searchResponse, searchBody) {
             if (!searchErr) {
@@ -44,5 +49,6 @@ exports.get = function(req, res) {
       } else {
         console.log('err logon');
       }
-  });
+    });
+  }
 };

@@ -66,3 +66,16 @@
 .footer {
   text-align: center;
 }
+
+/********** Table **********/
+.ellipsis-table tbody tr td {
+  /* essential */
+  text-overflow: ellipsis;
+  width: 200px;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+
+  /* for good looks */
+  padding: 10px;
+}

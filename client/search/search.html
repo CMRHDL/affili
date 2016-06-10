@@ -1,12 +1,68 @@
 <form class="form-inline">
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Username">
+    <input type="text" class="form-control" placeholder="Username" ng-model="vm.input.username">
   </div>
   <div class="form-group">
-    <input type="password" class="form-control" placeholder="Password">
+    <input type="password" class="form-control" placeholder="Password" ng-model="vm.input.password">
   </div>
   <div class="form-group">
-    <input type="test" class="form-control" placeholder="Suchbegriff">
+    <input type="text" class="form-control" placeholder="Suchbegriff" ng-model="vm.input.search">
   </div>
-  <button type="submit" class="btn btn-default">Suchen!</button>
+  <button type="submit" class="btn btn-default" ng-click="vm.search()">Suchen!</button>
+  <button type="submit" class="btn btn-default" ng-click="vm.advancedSearch = !vm.advancedSearch">{{vm.advancedSearch ? 'Verstecke' : 'Zeige'}} weitere Optionen</button>
 </form>
+<br>
+<form class="form-inline" ng-if="vm.advancedSearch">
+  <div class="form-group">
+    <input type="number" class="form-control" placeholder="Anzahl" ng-model="vm.input.PageSize">
+  </div>
+  <select
+    ng-options="item as item for item in vm.SortOrderChoices"
+    ng-model="vm.input.SortOrder">
+  </select>
+  <select
+    ng-options="item as item for item in vm.SortByChoices"
+    ng-model="vm.input.SortBy">
+  </select>
+</form>
+<hr>
+<div class="bs-example" data-example-id="hoverable-table">
+  <table class="table table-hover ellipsis-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Marke</th>
+        <th>Produkt</th>
+        <th>Score</th>
+        <th>Preis</th>
+        <th>Lieferung</th>
+        <th>Anbieter</th>
+        <th>Ref-Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="entry in vm.searchResult.Products">
+        <th scope="row" ng-bind="$index"></th>
+        <td title="{{entry.Brand}}" ng-bind="entry.Brand"></td>
+        <td title="{{entry.ProductName}}" ng-bind="entry.ProductName"></td>
+        <td title="{{entry.Score}}">
+          <uib-rating
+            titles="[{{entry.Score}},{{entry.Score}},{{entry.Score}},{{entry.Score}},{{entry.Score}},]"
+            ng-model="entry.Score"
+            max="5"
+            read-only="true"
+          >
+          </uib-rating>
+        </td>
+        <td title="{{entry.PriceInformation.DisplayPrice}}" ng-bind="entry.PriceInformation.DisplayPrice"></td>
+        <td title="{{entry.PriceInformation.DisplayShipping}}" ng-bind="entry.PriceInformation.DisplayShipping"></td>
+        <td title="{{entry.ShopTitle}}" ng-bind="entry.ShopTitle"></td>
+        <td>
+          <a title="{{entry.Deeplink1}}" ng-href="{{entry.Deeplink1}}">
+            <span class="glyphicon glyphicon-share-alt"></span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

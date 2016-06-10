@@ -37,7 +37,7 @@
     });
   }
 
-  angular.module('app',['ngRoute', 'angularSoap']);
+  angular.module('app',['ngRoute', 'ui.bootstrap',]);
   angular.module('app').config(config);
 
 }());

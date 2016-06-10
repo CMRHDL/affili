@@ -23,7 +23,7 @@
     };
 
     service.post = function(restURL, params) {
-      return $http.post(restURL, postConfig, params).then(function(data) {
+      return $http.post(restURL, params).then(function(data) {
         return data;
       }, function(data) {
         buildError(data);
